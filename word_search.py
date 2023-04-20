@@ -1,12 +1,12 @@
-# Python3 program to search a word in a 2D grid
+# Python program to search a word in a puzzle
 class WordSearch:
 	
 	def __init__(self):
-		self.R = None
-		self.C = None
+		self.Row = None
+		self.Col = None
 		self.dir = [[-1, 0], [1, 0], [1, 1],
-					[1, -1], [-1, -1], [-1, 1],
-					[0, 1], [0, -1]]
+			   [1, -1], [-1, -1], [-1, 1],
+			   [0, 1], [0, -1]]
 					
 	# This function searches in all 8-direction
 	# from point(row, col) in grid[][]
@@ -31,8 +31,8 @@ class WordSearch:
 			for k in range(1, len(word)):
 				
 				# If out of bound or not matched, break
-				if (0 <= rd <self.R and
-					0 <= cd < self.C and
+				if (0 <= rd <self.Row and
+					0 <= cd < self.Col and
 					word[k] == grid[rd][cd]):
 					
 					# Moving in particular direction
@@ -53,13 +53,13 @@ class WordSearch:
 	def patternSearch(self, grid, word):
 		
 		# Rows and columns in given grid
-		self.R = len(grid)
-		self.C = len(grid[0])
+		self.Row = len(grid)
+		self.Col = len(grid[0])
 		
 		# Consider every point as starting point
 		# and search given word
-		for row in range(self.R):
-			for col in range(self.C):
+		for row in range(self.Row):
+			for col in range(self.Col):
 				if self.search2D(grid, row, col, word):
 					print("pattern found at " +
 						str(row +1) + ', ' + str(col+1))
@@ -67,8 +67,8 @@ class WordSearch:
 # Driver Code
 if __name__=='__main__':
 	grid = ["AWPFE",
-			"XIILZ",
-			"NCRAF",
+		"XIILZ",
+		"NCRAF",
 	        "CEGGU",
 	        "MQSTN"]
 	w_search = WordSearch()
